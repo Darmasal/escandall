@@ -1,0 +1,106 @@
+# phpMyAdmin SQL Dump
+# version 2.5.3
+# http://www.phpmyadmin.net
+#
+# Servidor: localhost
+# Tiempo de generación: 12-02-2007 a las 19:44:02
+# Versión del servidor: 3.23.54
+# Versión de PHP: 4.0.4pl1
+# 
+# Base de datos : `qe771`
+# 
+
+# --------------------------------------------------------
+
+#
+# Estructura de tabla para la tabla `e_art_man`
+#
+
+CREATE TABLE `e_art_man` (
+  `Article` varchar(8) NOT NULL default '',
+  `Manufactura` varchar(10) NOT NULL default '',
+  `Qty` float NOT NULL default '0',
+  PRIMARY KEY  (`Article`,`Manufactura`)
+) TYPE=MyISAM COMMENT='Creuat de Articles i manufactura';
+
+#
+# Volcar la base de datos para la tabla `e_art_man`
+#
+
+
+
+
+# --------------------------------------------------------
+
+#
+# Estructura de tabla para la tabla `e_art_mat`
+#
+
+CREATE TABLE `e_art_mat` (
+  `Article` varchar(8) NOT NULL default '',
+  `Materia` varchar(10) NOT NULL default '',
+  `Qty` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`Article`,`Materia`)
+) TYPE=MyISAM COMMENT='Taula creuada de Article i materia prima';
+
+#
+# Volcar la base de datos para la tabla `e_art_mat`
+#
+
+# --------------------------------------------------------
+
+#
+# Estructura de tabla para la tabla `e_articles`
+#
+
+CREATE TABLE `e_articles` (
+  `Referencia` varchar(8) NOT NULL default '',
+  `Nom` varchar(100) NOT NULL default '',
+  `Marge` int(11) NOT NULL default '0',
+  `Transport` int(11) NOT NULL default '0',
+  `Generals` int(11) NOT NULL default '0',
+  `Financiacio` int(11) NOT NULL default '0',
+  `Varis` int(11) NOT NULL default '0',
+  `Representant` int(11) NOT NULL default '0',
+  `Smarge` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`Referencia`)
+) TYPE=MyISAM COMMENT='Article d''escandall';
+
+#
+# Volcar la base de datos para la tabla `e_articles`
+#
+
+# --------------------------------------------------------
+
+#
+# Estructura de tabla para la tabla `e_manufactura`
+#
+
+CREATE TABLE `e_manufactura` (
+  `Manufactura` varchar(10) NOT NULL default '',
+  `Preu` float NOT NULL default '0',
+  `Tipus` varchar(20) NOT NULL default '',
+  PRIMARY KEY  (`Manufactura`)
+) TYPE=MyISAM COMMENT='Manufacturas dels taller';
+
+#
+# Volcar la base de datos para la tabla `e_manufactura`
+#
+
+# --------------------------------------------------------
+
+#
+# Estructura de tabla para la tabla `e_materies`
+#
+
+CREATE TABLE `e_materies` (
+  `Materia` varchar(10) NOT NULL default '',
+  `Umesura` varchar(10) NOT NULL default '',
+  `Preu` float NOT NULL default '0',
+  `Proveidor` varchar(20) NOT NULL default '',
+  PRIMARY KEY  (`Materia`)
+) TYPE=MyISAM COMMENT='Materies Primes';
+
+#
+# Volcar la base de datos para la tabla `e_materies`
+#
