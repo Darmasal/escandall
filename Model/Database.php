@@ -5,8 +5,6 @@ class Database
  
     public function __construct()
     {
-
-        require_once "/config.cfg";
  
         try {
             $this->connection = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE_NAME);
