@@ -1,10 +1,8 @@
 <?php
 
 function Conectarse(){
-
- // needs to include ('../inc/config.cfg');
- 
- try {
+   // needs to include ('../inc/config.cfg');
+  try {
    $connection = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE_NAME);
    if ( mysqli_connect_errno()) {
        throw new Exception("Could not connect to database.");   
@@ -12,21 +10,33 @@ function Conectarse(){
    } catch (Exception $e) {
       throw new Exception($e->getMessage());   
    }
-return $connection;}        
+return $connection;
+}        
  
  
- 
- /*
- if (!($link=mysql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD))){
-    echo "Error conectando a la base de datos.";
-    exit();  }
-   if (!mysql_select_db(DB_DATABASE_NAME,$link))
-   {      echo "Error seleccionando la base de datos.";
-   exit();   }   
-   return $link;}*/
+function login($nom, $clau){
+   // needs to include ('../inc/config.cfg');
+  try {
+   $con = Conectarse();
+   $result = mysqli_query($con,
+      "SELECT * FROM `e_users` WHERE 'user' LIKE '".$nom."';");
+  }
+   if(mysqli_num_rows($result)>0){
+      $row = mysqli_fetch_array($result);
+      $password = $row['password'];
+   
+      if ($password==md5($clau)){
+         return TRUE;
+      }
+ /*  if ( mysqli_connect_errno()) {
+       throw new Exception("Could not connect to database.");   
+   }
+   } catch (Exception $e) {
+      throw new Exception($e->getMessage());   
+   }*/
+   }
+return FALSE;
 
-//function CerrarConexion(){
-//	mysql_close($link);
-// }
+}   
 
 ?>
