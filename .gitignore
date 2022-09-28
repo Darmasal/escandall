@@ -1,3 +1,4 @@
 *.github
 *.cfg
-config.php
+inc/config.php
+.vscode
