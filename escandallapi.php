@@ -1,13 +1,13 @@
-
-
 <?php
-header("Content-Type:application/json");
 
 //controlar que l'usuari és correcte
 //sino redirecció a la web de login
-if (SESSION)
+session_start();
+if (isset($_SESSION["usuari"])){
 
 //include ('login.php');
+
+header("Content-Type:application/json");
 
 if (isset($_GET['order_id']) && $_GET['order_id']!="") {
     include ('inc/config.php');
@@ -40,4 +40,14 @@ function response($order_id,$amount,$response_code,$response_desc){
 	$json_response = json_encode($response);
 	echo $json_response;
 }
+
+}
+
+// Si l'usuari no està en sessió
+else{
+    header("Location: escandalllog.php");
+    die();
+}
+
+
 ?>
