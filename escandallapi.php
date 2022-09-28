@@ -3,9 +3,7 @@
 //controlar que l'usuari és correcte
 //sino redirecció a la web de login
 session_start();
-if (isset($_SESSION["usuari"])){
-
-//include ('login.php');
+if (isset($_SESSION["USER"])){
 
 header("Content-Type:application/json");
 
