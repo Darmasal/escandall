@@ -2,10 +2,26 @@
 
 //controlar que l'usuari és correcte
 //sino redirecció a la web de login
-session_start();
-if (isset($_SESSION["USER"])){
+//per establir, primer objectiu fer funcionar programa sense control d'usuaris
+//session_start();
+//if (isset($_SESSION["USER"])){
 
 header("Content-Type:application/json");
+
+//Rebre objecte json per POST
+
+/*
+// Handling data in JSON format on the server-side using PHP
+//
+header("Content-Type: application/json");
+// build a PHP variable from JSON sent using POST method
+$v = json_decode(stripslashes(file_get_contents("php://input")));
+// build a PHP variable from JSON sent using GET method
+$v = json_decode(stripslashes($_GET["data"]));
+// encode the PHP variable to JSON and send it back on client-side
+echo json_encode($v);
+*/
+
 
 if (isset($_GET['order_id']) && $_GET['order_id']!="") {
     include ('inc/config.php');
@@ -39,13 +55,15 @@ function response($order_id,$amount,$response_code,$response_desc){
 	echo $json_response;
 }
 
-}
 
 // Si l'usuari no està en sessió
-else{
-    header("Location: escandalllog.php");
-    die();
-}
+//pendent de desarrollar
+
+//}
+//else{
+//    header("Location: escandalllog.php");
+//    die();
+//}
 
 
 ?>

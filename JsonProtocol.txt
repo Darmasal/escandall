@@ -1,0 +1,70 @@
+----- DOCUMENT DE ANALISI DE PROTOCOL DE JSON ------
+
+tots els json hauran d'estar formats per un array que contindrà:
+
+-Ordre
+-Contingut
+
+----- ORDRE ------
+
+L'ordre serà el codi on s'indicarà que és el que s'ha de fer amb el contingut
+ enviat.
+
+----- CONTINGUT ------
+
+** ALTA ESCANDALL
+code: AESC
+content: 
+ - ref: referència de l'escandall a donar d'alta
+ - name: nom de l'escandall a donar de 
+ - [array] materials: n Entrades de materials
+    -refmat: referència de materials
+    -quantity: quantitat del materials
+    -margin: [Y/N] si el material ha de comptar al marge de benefici.
+ - [array] work: n Entrades de feina en l'escandall
+    -type: descripció del tipus de feina a fer
+    -seconds: quantitat del temps necessari per fer la feina
+    -margin: [Y/N] si la feina cal que compti pel marge de benefici.
+ - 
+
+** BAIXA ESCANDALL
+code: BESC
+content:
+ - ref: referència de l'escandall a donar de baixa
+
+** MODIFICACIO ESCANDALL
+code: MESC
+content:
+ - ref: referència de l'escandall a donar d'alta
+
+** ALTA MATERIAL
+code: AMAT
+content:
+ - refmat: referència interna al nostre taller del material
+ - refsup: referència del proveidor
+ - name: Nom del material
+ - measure: Unitat de mesura del material, normalment pel preu que es cobra en factura
+ - price: Preu de la unitat de mesura
+ - supplier: Proveidor
+
+** BAIXA MATERIAL
+code: BMAT
+content:
+ - refmat: referència interna al nostre taller del material
+
+** MODIFICACIO MATERIAL
+code: MMAT
+content:
+ - refmat: referència interna al nostre taller del material
+ - refsup: referència del proveidor
+ - name: Nom del material
+ - measure: Unitat de mesura del material, normalment pel preu que es cobra en factura
+ - price: Preu de la unitat de mesura
+ - supplier: Proveidor
+
+ ** CERCA DE MATERIAL
+code: MMAT
+content:
+ - refmat: referència interna al nostre taller del material
+ - name: Nom del material
+ - supplier: Proveidor
